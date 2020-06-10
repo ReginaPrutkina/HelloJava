@@ -26,29 +26,29 @@ public class Cars {
     int countAllCar = strArr.length;
     int count100 = 0, count200 = 0, count300 = 0, count400 = 0;
     public Cars() {
-        String[][] Arr;
-        Arr = new String[countAllCar][3];
+//        String[][] Arr;
+//        Arr = new String[countAllCar][3];
         int typeCar;
         int numberCar;
 
         for (int i = 0; i < countAllCar; i++) {
-            String[] tempArr;
+           // String[] tempArr;
             //Заполняем Arr
-            tempArr = strArr[i].split("-");
-            for (int j = 0; j < tempArr.length; j++) {
-                Arr[i][j] = tempArr[j];
-            }
+//            tempArr = strArr[i].split("-");
+//            for (int j = 0; j < tempArr.length; j++) {
+//                Arr[i][j] = tempArr[j];
+//            }
 // Считаем кол-во машин разных типов, т.е. длину массивов для каждого типа
-            switch (tempArr[0].substring(1, 4)) {
+            switch (strArr[i].substring(1, 4)) {
                 case "100" ->  count100++;
                 case "200" ->  count200++;
                 case "300" -> count300++;
                 case "400" ->  count400++;
             }
             //Доп поле - пустая строка, если нет данных
-            if (tempArr.length < 3) Arr[i][2] = "0";
-            for (int j = 0; j < 3; j++) System.out.print(Arr[i][j] + ' ');
-            System.out.println();
+//            if (tempArr.length < 3) Arr[i][2] = "0";
+//            for (int j = 0; j < 3; j++) System.out.print(Arr[i][j] + ' ');
+//            System.out.println();
         }
         //инициализируем массивы для каждого типа
         int i100 = 0, i200 = 0, i300 = 0, i400 = 0; // текущая строка в каждом массиве
@@ -59,7 +59,7 @@ public class Cars {
 
         for (int i = 0; i < countAllCar; i++) {
             String[] tempArr;
-            //Заполняем Arr
+            //Заполняем все Arr
             tempArr = strArr[i].split("-");
             typeCar = Integer.valueOf(tempArr[0].substring(1, 4));
             numberCar = Integer.valueOf(tempArr[0].substring(5));
@@ -104,7 +104,7 @@ public class Cars {
      * Считает расход для заданного массива
       * @param Arr - массив машин одного типа
       * @param typeCar - тип (100, 200, 300, 400)
-      * @return
+      * @return сумму расходов от всех эл массива
       */
     public double rashodType(int[][] Arr, int typeCar, int countCar){
         int idxrashToplArr=typeCar/100-1;
@@ -143,6 +143,96 @@ public class Cars {
 
     }
 
+    /**
+     *Сортирует массив(изменяет входной массив) по заданному полю
+     * @param Arr - неотсортированный массив
+     * @param sortField - индекс поля сортировки
+     */
+    public void sortArray(int[][] Arr, int sortField){
+
+        int col = Arr[0].length; //ко-во колонок
+        int str=Arr.length;     //кол-во строк
+        int[] tempArr=new int[col];
+        boolean isSorted = false;
+        int buf;
+        while(!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < str-1; i++) {
+                if (Arr[i ][sortField] > Arr[i+1][sortField]) {
+                    isSorted = false;
+                   tempArr = Arr[i];
+                    Arr[i] = Arr[i +1];
+                    Arr[i +1] = tempArr;
+                }
+            }
+
+        }
+//        //Вывод на экран
+//        for (int i = 0; i < str; i++) {
+//            String str1="";
+//            for (int j = 0; j <col ; j++) {
+//                str1+=" "+Arr[i][j];
+//            }
+//            System.out.println(str1);
+//        }
 }
+
+    /**
+     * Выводит на экран отсортированный схлопнутый массив
+     * @param Arr -  массив с дублями
+     */
+    public void shlopArr(int[][] Arr,int sortField){
+        //Сорируем по номеру Авто
+        sortArray(Arr,0);
+    //создаем новый схлопнутый массив
+    int newCount=0;
+    int numberCar=0;
+    for (int i = 0; i <Arr.length ; i++) {
+        if (numberCar!=Arr[i][0]) {
+            numberCar = Arr[i][0];
+            newCount++;
+        }
+    }
+    int[][] smallArr=new int [newCount][Arr[0].length];
+    int idx=0;  //номер строки нового массива
+    numberCar=Arr[0][0];
+    for (int i = 0; i <Arr.length ; i++) {
+        if (numberCar!=Arr[i][0]) {
+            idx++;
+            numberCar = Arr[i][0];
+        }
+        smallArr[idx][0]=Arr[i][0];
+        for (int j = 1; j <Arr[0].length ; j++) {
+            smallArr[idx][j]+=Arr[i][j];
+        }
+
+    }
+        sortArray(smallArr,sortField);
+        //Вывод на экран
+        for (int i = 0; i < smallArr.length; i++) {
+            String str1="";
+            for (int j = 0; j <smallArr[0].length ; j++) {
+                str1+=" "+smallArr[i][j];
+            }
+            System.out.println(str1);
+        }
+
+}
+public void printSortArrays(){
+        // сортировка по полую 1 - пробег, по полю2 - доп
+     System.out.println(typeArr[0][0]+' '+typeArr[0][1]+typeArr[0][2]);
+     shlopArr(Arr100,1);
+    System.out.println(typeArr[1][0]+' '+typeArr[1][1]+typeArr[1][2]);
+    shlopArr(Arr200,1);
+    System.out.println(typeArr[2][0]+' '+typeArr[2][1]+typeArr[2][2]);
+    shlopArr(Arr300,1);
+    System.out.println(typeArr[3][0]+' '+typeArr[3][1]+typeArr[3][2]);
+    shlopArr(Arr400,1);
+
+
+    }
+}
+
+
 
 

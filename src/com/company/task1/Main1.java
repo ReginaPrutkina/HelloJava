@@ -10,5 +10,9 @@ public class Main1 {
             System.out.println();
         }
         cars.rashodAllTypesCar();
+      //  int[][] testArr={{11,2,3,4},{10,500,1,7},{10,45,1,7}};
+        //cars.sortArray(testArr,2);
+        //cars.shlopArr(cars.Arr200,2);
+        cars.printSortArrays();
     }
 }
