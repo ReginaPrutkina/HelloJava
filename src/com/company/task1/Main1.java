@@ -2,17 +2,20 @@ package com.company.task1;
 
 public class Main1 {
     public static void main(String[] args){
-        System.out.println("привет");
+       //Задание 1
         Cars cars = new Cars();
-        System.out.println("Arr200:" + cars.Arr200.length);
-        for (int i = 0; i < cars.Arr200.length; i++) {
-            for (int j = 0; j < 3; j++) System.out.print(Integer.toString(cars.Arr200[i][j]) + ' ');
-            System.out.println();
-        }
         cars.rashodAllTypesCar();
-      //  int[][] testArr={{11,2,3,4},{10,500,1,7},{10,45,1,7}};
-        //cars.sortArray(testArr,2);
-        //cars.shlopArr(cars.Arr200,2);
         cars.printSortArrays();
+
+        //задание 2 - массивы
+        int[] testArr={1,2,3,4,5,6,7,8,9};
+        Massiv mas=new Massiv();
+        //int[] newMas=mas.addElement(testArr,1,100);
+        int[]testArr2={3,4,55,67,2};
+        int[] newMas=mas.sortArrDown(testArr2);
+        //int[] newMas=mas.delElement(testArr2,2);
+        //mas.outputArr(mas.fillArr(testArr,77));
+        System.out.println(mas.maxArr(testArr2));
+
     }
 }

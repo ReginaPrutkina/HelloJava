@@ -26,29 +26,17 @@ public class Cars {
     int countAllCar = strArr.length;
     int count100 = 0, count200 = 0, count300 = 0, count400 = 0;
     public Cars() {
-//        String[][] Arr;
-//        Arr = new String[countAllCar][3];
         int typeCar;
         int numberCar;
 
-        for (int i = 0; i < countAllCar; i++) {
-           // String[] tempArr;
-            //Заполняем Arr
-//            tempArr = strArr[i].split("-");
-//            for (int j = 0; j < tempArr.length; j++) {
-//                Arr[i][j] = tempArr[j];
-//            }
 // Считаем кол-во машин разных типов, т.е. длину массивов для каждого типа
-            switch (strArr[i].substring(1, 4)) {
+        for (int i = 0; i < countAllCar; i++) {
+             switch (strArr[i].substring(1, 4)) {
                 case "100" ->  count100++;
                 case "200" ->  count200++;
                 case "300" -> count300++;
                 case "400" ->  count400++;
             }
-            //Доп поле - пустая строка, если нет данных
-//            if (tempArr.length < 3) Arr[i][2] = "0";
-//            for (int j = 0; j < 3; j++) System.out.print(Arr[i][j] + ' ');
-//            System.out.println();
         }
         //инициализируем массивы для каждого типа
         int i100 = 0, i200 = 0, i300 = 0, i400 = 0; // текущая строка в каждом массиве
@@ -167,14 +155,6 @@ public class Cars {
             }
 
         }
-//        //Вывод на экран
-//        for (int i = 0; i < str; i++) {
-//            String str1="";
-//            for (int j = 0; j <col ; j++) {
-//                str1+=" "+Arr[i][j];
-//            }
-//            System.out.println(str1);
-//        }
 }
 
     /**
