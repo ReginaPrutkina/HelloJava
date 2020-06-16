@@ -30,7 +30,7 @@ public class Main2 {
         System.out.println("Расход ГСМ всего "+ rAll);
 
         double minRashod = Math.min(Math.min(r100,r200), Math.min(r300,r400));
-        double maxRashod = Math.max(Math.max(r100,r200), Math.max(r100,r200));
+        double maxRashod = Math.max(Math.max(r100,r200), Math.max(r300,r400));
         if (minRashod==r100)
             System.out.println("Минимальный расход для типа '" + cars100.typeName + "': " + r100);
         else if (minRashod==r200)
