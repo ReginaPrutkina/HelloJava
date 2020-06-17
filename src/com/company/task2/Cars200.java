@@ -1,12 +1,13 @@
 package com.company.task2;
 
 public class Cars200 extends Cars{
-    public Cars200(){
+    String dopZnach;
+    public Cars200(int[][] intArr,int type,String typeName,double cost1lGSM,double rashod100km){
         int arrLen=0;
-        rashod100km=12.0;
-        cost1lGSM= 48.90;
-        type=200;
-        typeName="грузовой авто";
+        this.rashod100km=rashod100km;
+        this.cost1lGSM=cost1lGSM;
+        this.type=type;
+        this.typeName=typeName;
         dopZnach="объем перевезенного груза (см. куб.)";
         int colFields=4;
         for (int i = 0; i < intArr.length; i++)
