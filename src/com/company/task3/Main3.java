@@ -60,5 +60,19 @@ public class Main3 {
             else if (maxRashod==r400)
                 System.out.println("Максимальный расход для типа '" + cars400.typeName + "': " + r400);
 
+        //***************************************
+        //задача 3 - калькулятор
+        System.out.println("задача 3 - калькулятор");
+        int iA=5;
+        int iB=8;
+        double dA=5.0;
+        double dB=8.0;
+        byte bA=5;
+        float fB= 8.0f;
+        Calculator calc=new Calculator("myUser");
+        CalculatorEng calcEng=new CalculatorEng("MyUser");
+        System.out.println(calc.calcDiv(1,2));
+        System.out.println(calcEng.calcPow2(5.0));
     }
+
 }
