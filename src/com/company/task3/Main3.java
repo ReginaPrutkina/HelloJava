@@ -61,7 +61,7 @@ public class Main3 {
                 System.out.println("Максимальный расход для типа '" + cars400.typeName + "': " + r400);
 
         //***************************************
-        //задача 3 - калькулятор
+        //задача 2 - калькулятор
         System.out.println("задача 3 - калькулятор");
         int iA=5;
         int iB=8;
@@ -73,6 +73,11 @@ public class Main3 {
         CalculatorEng calcEng=new CalculatorEng("MyUser");
         System.out.println(calc.calcDiv(1,2));
         System.out.println(calcEng.calcPow2(5.0));
+        //***************************************
+        //задача 3 - Простые числа
+        SimpleNumbers simpleNumbers=new SimpleNumbers(10000);
+        simpleNumbers.printArray(20,5,simpleNumbers.arrSimpleNumbers);
     }
+
 
 }
