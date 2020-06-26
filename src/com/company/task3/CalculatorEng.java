@@ -1,8 +1,8 @@
 package com.company.task3;
 
 public class CalculatorEng extends Calculator{
-    CalculatorEng (String userName){
-        super(userName);
+    CalculatorEng(Logging logger){
+        super(logger);
     }
     double calcSqr(int a){
         double x1= a;
@@ -12,7 +12,7 @@ public class CalculatorEng extends Calculator{
             if (x1-x2<0.01) break;
             else x1=x2;
         }
-        logMethod("Квадратный корень");
+        logger.logMethod("Квадратный корень");
         return (double)Math.round(x2*100)/100;
     }
     double calcSqr(double a) {
@@ -23,15 +23,15 @@ public class CalculatorEng extends Calculator{
             if (x1-x2<0.01) break;
             else x1=x2;
         }
-        logMethod("Квадратный корень");
+        logger.logMethod("Квадратный корень");
         return (double)Math.round(x2*100)/100;
     }
     double calcPow2(double a){
-        logMethod("Квадрат числа");
+        logger.logMethod("Квадрат числа");
         return a*a;
     }
     int calcPow2(int a){
-        logMethod("Квадрат числа");
+        logger.logMethod("Квадрат числа");
         return a*a;
     }
 }

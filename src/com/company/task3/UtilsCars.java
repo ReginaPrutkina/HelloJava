@@ -1,8 +1,8 @@
 package com.company.task3;
 
-public interface UtilsCars {
+public class UtilsCars {
     //создает массив машин с полями int из массива строк
-    default  int[][] createIntArr(String[] strArr) {
+    public   int[][] createIntArr(String[] strArr) {
         int[][] intArr = new int[strArr.length][4];
         for (int i = 0; i < strArr.length; i++) {
             String[] tempArr;
@@ -23,7 +23,7 @@ public interface UtilsCars {
      * @param Arr       - неотсортированный массив
      * @param sortField - индекс поля сортировки
      */
-    default void sortArray(int[][] Arr, int sortField) {
+    public void sortArray(int[][] Arr, int sortField) {
         int col = Arr[0].length; //ко-во колонок
         int str = Arr.length;     //кол-во строк
         int[] tempArr;
@@ -48,7 +48,7 @@ public interface UtilsCars {
      * int[][] carsArr - массив машин одного типа, схлопывание идет только по гос номеру
      * @param sortField -  поле сортировки (нет проверки на неверный ввод!!)
      */
-    default int[][] shlopArr(int[][] carsArr, int sortField) {
+    public int[][] shlopArr(int[][] carsArr, int sortField) {
         //Сорируем по номеру Авто
         sortArray(carsArr, 1);
         //создаем новый схлопнутый массив
@@ -82,20 +82,7 @@ public interface UtilsCars {
         return smallArr;
 
     }
-
-    default void printArr(int[][] carsArr, String typeName, String dopZnach) {
-        System.out.println(typeName);
-        System.out.println("Тип Гос_номер  Пробег " + dopZnach);
-        for (int i = 0; i < carsArr.length; i++) {
-            String str1 = "";
-            for (int j = 0; j < carsArr[0].length; j++) {
-                str1 += " " + carsArr[i][j];
-            }
-            System.out.println(str1);
-        }
-    }
-    //перегружаем вывод иассива для типа машин без доп значений
-    default void printArr(int[][] carsArr, String typeName) {
+    public void printArr(int[][] carsArr, String typeName) {
         System.out.println(typeName);
         System.out.println("Тип Гос_номер  Пробег " );
         for (int i = 0; i < carsArr.length; i++) {
@@ -106,5 +93,15 @@ public interface UtilsCars {
             System.out.println(str1);
         }
     }
-
-}
+    public void printArr(int[][] carsArr, String typeName,String dopZnach) {
+        System.out.println(typeName);
+        System.out.println("Тип Гос_номер  Пробег " + dopZnach);
+        for (int i = 0; i < carsArr.length; i++) {
+            String str1 = "";
+            for (int j = 0; j < carsArr[0].length; j++) {
+                str1 += " " + carsArr[i][j];
+            }
+            System.out.println(str1);
+        }
+    }
+    }

@@ -13,18 +13,18 @@ public class Main3 {
                 "C300_3-150-29", "C400_3-100-28",
                 "C100_1-300", "C200_1-100-750", "C300_1-32-15"};
         //Создаем через класс утилит целочисленный массив машин intCarsArr из строкового
-        //UtilsCars utils=new UtilsCars();
-        Cars cars = new Cars();
-        int[][] intCarsArr = cars.createIntArr(strArr);
+        UtilsCars utils=new UtilsCars();
+        //Cars cars = new Cars();
+        int[][] intCarsArr = utils.createIntArr(strArr);
         //Создаем экзепляры классов машин
         Cars100 cars100 = new Cars100(intCarsArr, 100, "легковые авто", 46.10, 12.5);
         CarsOthers cars200 = new CarsOthers(intCarsArr,200,"грузовой авто",48.90,12.0,"объем перевезенного груза (см. куб.)");
         CarsOthers cars300 = new CarsOthers(intCarsArr,300,"пассажирский транспорт",47.50,11.5,"число перевезенных пассажиров");
         CarsOthers cars400 = new CarsOthers(intCarsArr,400,"тяжелая техника(краны)",48.90,20.0,"вес поднятых грузов (тонн)");
 //Проерка сортировки и схлопывания - используем функции из интерфейса Utils
-        cars.printArr(cars.shlopArr(cars100.carsArr,2),cars100.typeName);
-        cars.printArr(cars.shlopArr(cars200.carsArr,1),cars200.typeName,cars200.dopZnach);
-        cars100.printArr(cars.shlopArr(cars100.carsArr,2),cars100.typeName);
+        utils.printArr(utils.shlopArr(cars100.carsArr,2),cars100.typeName);
+        utils.printArr(utils.shlopArr(cars200.carsArr,1),cars200.typeName,cars200.dopZnach);
+        utils.printArr(utils.shlopArr(cars100.carsArr,2),cars100.typeName);
 
 
         // расход для всех типов транспорта,  общий раход и мин.макс
@@ -69,14 +69,16 @@ public class Main3 {
         double dB=8.0;
         byte bA=5;
         float fB= 8.0f;
-        Calculator calc=new Calculator("myUser");
-        CalculatorEng calcEng=new CalculatorEng("MyUser");
+        Logger logger=new Logger("myUser");
+        Calculator calc=new Calculator(logger);
+        CalculatorEng calcEng=new CalculatorEng(logger);
+        logger.logMethod("test");
         System.out.println(calc.calcDiv(1,2));
         System.out.println(calcEng.calcPow2(5.0));
         //***************************************
         //задача 3 - Простые числа
-        SimpleNumbers simpleNumbers=new SimpleNumbers(10000);
-        simpleNumbers.printArray(20,5,simpleNumbers.arrSimpleNumbers);
+        SimpleNumbersReshEr simpleNumbersReshetoEratosfena =new SimpleNumbersReshEr(100);
+        simpleNumbersReshetoEratosfena.printArray(20,5);
     }
 
 
