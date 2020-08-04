@@ -4,8 +4,7 @@ import java.util.Collection;
 
 public class UtilsCars {
 
-  //  public void printCarsList(Collection<Object> carsCollection) //почему не могу сделать Collection<Cars> carsCollection?
-    public void printCarsList(Collection<Cars> carsCollection) //почему не могу сделать Collection<Cars> carsCollection?
+  public void printCarsList(Collection<Cars> carsCollection)
 
     {
         for (Object car:carsCollection
@@ -15,13 +14,14 @@ public class UtilsCars {
         }
     }
 
-     // Считает расход топлива для заданного массива
-    public double rashodType(Collection<Cars> carsCollection,double rashod100km,double cost1lGSM) {
-        double summaRashOnKm = rashod100km * cost1lGSM;
-        double summaRash = 0.0;
+     // Считает расход топлива для заданного типа
+    public double fuelExpenseForType(Collection<Cars> carsCollection,int type) {
+        double sumOfExpense=0;
         for (Cars car : carsCollection)
-            summaRash += (double) car.probeg * summaRashOnKm;
-            return ((double) Math.round(summaRash) / 100);
+            if (car.type==type) {
+                sumOfExpense += (double) car.run * sumOfExpense;
+            }
+        return ((double) Math.round(sumOfExpense) / 100);
         }
 
     }

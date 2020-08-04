@@ -3,23 +3,15 @@ package com.company.task4;
 import java.util.Objects;
 
 abstract class Cars {
-    int probeg;
+    int run=0;
     int type=0;
-    String typeName="";
     String gosNumber; //для уникальности гос номер имеет вид: тип_номер
+    ParamsDtCars paramsDT;
 
-    @Override
-    public String toString() {
-        return "тип: " + type +
-                " " + typeName +
-                 " гос.номер: " + gosNumber+
-                " пробег: " + probeg;
-    }
     // объекты и хэши равны для машин одного типа с одинаковым гос номером
     @Override
     public int hashCode() {
-        String str=" typeName: '" + typeName +
-                " gosNumber: " + gosNumber;
+        String str = " Гос.номер: " + gosNumber;
         return str.hashCode();
     }
     @Override
