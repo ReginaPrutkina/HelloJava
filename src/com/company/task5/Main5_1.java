@@ -81,8 +81,16 @@ public class Main5_1 {
             run = Integer.parseInt(tempArray.get(1));
             if (type != 100) {
                 addParam = Integer.parseInt(tempArray.get(2));
-                carsList.add(new CarsOthers(gosNumber, type, run, addParam));
-            } else {
+                CarsOthers car = new CarsOthers(gosNumber, type, run, addParam);
+                if (carsList.contains(car)) {
+                    carsList.get(carsList.indexOf(car)).run = carsList.get(carsList.indexOf(car)).run + run;
+                    ((CarsOthers)carsList.get(carsList.indexOf(car))).addParam = ((CarsOthers)carsList.get(carsList.indexOf(car))).addParam + addParam;
+                }else
+                     carsList.add(new CarsOthers(gosNumber, type, run, addParam));
+            } else {Cars car = new Cars100(gosNumber, type, run);
+                if (carsList.contains(car)) {
+                carsList.get(carsList.indexOf(car)).run = carsList.get(carsList.indexOf(car)).run + run;
+                }else
                 carsList.add(new Cars100(gosNumber, type, run));
             }
 

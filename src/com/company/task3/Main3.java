@@ -1,5 +1,7 @@
 package com.company.task3;
 
+import java.util.Comparator;
+
 public class Main3 {
 
     public static void main(String[] args) {
