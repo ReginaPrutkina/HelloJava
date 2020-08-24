@@ -1,12 +1,12 @@
 package com.company.project;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class DepositService implements DepositServiceActions{
     //здесь д б объект связи в ресурсом хранения данных - БД или файл
-    public DepositService(){
-
+    NeedNotificate notification;
+    public DepositService(NeedNotificate notification){
+        this.notification = notification;
     }
     @Override
     public List<Deposit> getAllDeposits() {
@@ -22,4 +22,5 @@ public class DepositService implements DepositServiceActions{
     public boolean saveDeposit(Deposit deposit) {
         return false;
     }
-}
+
+   }

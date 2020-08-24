@@ -1,4 +1,5 @@
 package com.company.task6;
+import javax.imageio.IIOException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,13 +8,30 @@ import java.util.*;
 
 public class Main6 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Задача 1 - ГСМ");
         UtilsCars utilsCars = new UtilsCars();
         String mode = "";
         Scanner sc = new Scanner(System.in);
         String GSMDirectory = "D:\\Users\\Lenovo\\IdeaProjects\\HelloJava\\GSM";
-        Logging carlogger = new LogToFile(utilsCars.authorization(), GSMDirectory + "\\log");
+        UserAuthorization userAuthorization = new UserAuthorization();
+        UserInfo userInfo = new UserInfo(userAuthorization.askUserLogin(),userAuthorization.askUserPassword());
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
+                 new FileOutputStream(GSMDirectory+"\\userinfo.ser"))){
+            objectOutputStream.writeObject(userInfo);
+            System.out.println(userInfo);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(
+                new FileInputStream(GSMDirectory+"\\userinfo.ser"))){
+            UserInfo userInfo1 = (UserInfo) objectInputStream.readObject();
+            System.out.println(userInfo1);
+        }catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Logging carlogger = new LogToFile(userInfo.userLogin, GSMDirectory + "\\log");
 
         do {
             System.out.print(" Для начала смены введите команду start, для выхода q > ");
