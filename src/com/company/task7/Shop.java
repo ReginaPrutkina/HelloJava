@@ -20,14 +20,16 @@ public class Shop {
     public void produceProduct()  {
         try {
         this.lock.lock();
-        while (this.poducts.size() >= 5)
+        while (this.poducts.size() >= 5){
                 this.cond.await();
+            this.cond.signalAll();}
             String newProduct = "Product "+producedCount;
             this.poducts.add(newProduct);
             System.out.println(newProduct+ " поставлен");
+            System.out.println("на полке "+this.poducts.size()+ " товаров");
             producedCount++;
             this.lock.unlock();
-           //this.cond.signal();
+          // this.cond.signal();
             }catch (InterruptedException e){
             System.out.println(e.getMessage());
         }
@@ -36,17 +38,20 @@ public class Shop {
     public void saleProduct(){
         try {
             this.lock.lock();
-            while (this.poducts.size() == 0)
+            while (this.poducts.size() == 0){
                 this.cond.await();
+                this.cond.signalAll();
+            }
             String saledProduct = this.poducts.get(0);
             this.poducts.remove(0);
-            System.out.println(saledProduct+ "продан");
+            System.out.println(saledProduct+ " продан");
             saledCount++;
             System.out.println("Продано всего "+saledCount);
+            System.out.println("на полке "+this.poducts.size()+ " товаров");
             this.lock.unlock();
            // this.cond.signal();
         }catch (InterruptedException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
     }

@@ -8,7 +8,7 @@ public class Consumer implements Runnable {
     }
 
     public void run() {
-        while (shop.saledCount < 19) {
+        while (shop.producedCount<20) {
             try {
                 shop.saleProduct();
                 Thread.sleep(100);
