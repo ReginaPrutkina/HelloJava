@@ -11,7 +11,7 @@ public class Shop {
     Lock lock;
     Condition cond;
     int producedCount = 0;
-    int saledCount = 0;
+    int soldCount = 0;
     public Shop(){
         poducts = new ArrayList<>();
         lock = new ReentrantLock();
@@ -22,16 +22,20 @@ public class Shop {
         this.lock.lock();
         while (this.poducts.size() >= 5){
                 this.cond.await();
-            this.cond.signalAll();}
+            this.cond.signalAll();
+
+        }
             String newProduct = "Product "+producedCount;
             this.poducts.add(newProduct);
             System.out.println(newProduct+ " поставлен");
             System.out.println("на полке "+this.poducts.size()+ " товаров");
             producedCount++;
-            this.lock.unlock();
+           // this.lock.unlock();
           // this.cond.signal();
             }catch (InterruptedException e){
             System.out.println(e.getMessage());
+        }finally {
+            this.lock.unlock();
         }
 
     };
@@ -41,18 +45,22 @@ public class Shop {
             while (this.poducts.size() == 0){
                 this.cond.await();
                 this.cond.signalAll();
+
             }
-            String saledProduct = this.poducts.get(0);
+            String soldProduct = this.poducts.get(0);
             this.poducts.remove(0);
-            System.out.println(saledProduct+ " продан");
-            saledCount++;
-            System.out.println("Продано всего "+saledCount);
+            System.out.println(soldProduct+ " продан");
+            soldCount++;
+            System.out.println("Продано всего "+soldCount);
             System.out.println("на полке "+this.poducts.size()+ " товаров");
-            this.lock.unlock();
-           // this.cond.signal();
+
+
         }catch (InterruptedException e){
             e.printStackTrace();
+        }finally {
+            this.lock.unlock();
         }
+
 
     }
 }
