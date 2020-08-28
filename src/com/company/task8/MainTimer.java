@@ -20,7 +20,6 @@ public class MainTimer {
                 e.printStackTrace();
             }
         }
-
         oneSecThread.interrupt();
         fiveSecThread.interrupt();
     }
